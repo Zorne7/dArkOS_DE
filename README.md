@@ -24,17 +24,9 @@ Perfect if you want an intuitive GUI while maintaining the lightweight nature of
 
 *Support for other DEs coming soon...*
 
-## 📁 Included Files
-
-| File | Description |
-|------|-------------|
-| `DE_install.sh` | Desktop Environment installation script |
-| `DE_start.sh` | Script to start the DE |
-| `README.md` | This file |
-
 ## 💡 Requirements
 
-- dArkOS (or a compatible distribution)
+- dArkOS
 - Administrator/sudo permissions
 - Internet connection for package downloads
 - An SD card or storage device
@@ -50,8 +42,7 @@ Follow these steps to install and run the Desktop Environment on dArkOS:
 
 1. Download the latest dArkOS image from the [official repository](https://github.com/christianhaitian/dArkOS)
 2. Flash the image to an SD card using tools like:
-   - **Balena Etcher** (recommended)
-   - **Rufus**
+   - **Rufus** (recommended)
    - **dd** command on Linux/Mac
 3. Safely eject the SD card
 
@@ -72,21 +63,19 @@ Follow these steps to install and run the Desktop Environment on dArkOS:
 ### Step 4: Enable Remote Services
 
 1. Go to **Settings**
-2. Enable **SSH** - for remote command execution
-3. Enable **SFTP** - for file transfer
-4. Note down your device's IP address (shown in Network settings)
+2. Enable **SSH/SFTP** - for remote command execution and file transfer
+3. Note down your device's IP address (shown in Network settings)
 
 ### Step 5: Transfer Installation Scripts
 
-On your computer, use SFTP to upload the scripts:
+On your computer, use SFTP to upload all files contained in the current folder:
 
 ```bash
 # Connect to your device via SFTP
-sftp root@<device-ip>
+sftp ark@<device-ip>
 
-# Upload the scripts
-put DE_install.sh
-put DE_start.sh
+# Upload the files
+put <file>
 
 # Exit SFTP
 bye
@@ -100,10 +89,10 @@ Connect to your device via SSH and execute the installation script:
 
 ```bash
 # SSH into your device
-ssh root@<device-ip>
+ssh ark@<device-ip>
 
 # Run the installation script
-bash DE_install.sh
+./DE_install.sh
 
 # Wait for installation to complete (this may take several minutes)
 ```
@@ -113,22 +102,10 @@ bash DE_install.sh
 After installation completes, start the DE:
 
 ```bash
-bash DE_start.sh
+./DE_start.sh
 ```
 
 The Desktop Environment should now be running on your device!
-
----
-
-## 🎮 Quick Command Reference
-
-```bash
-# Install the DE
-bash DE_install.sh
-
-# Start the DE
-bash DE_start.sh
-```
 
 ---
 
@@ -136,9 +113,14 @@ bash DE_start.sh
 
 The following issues are currently known and may affect your experience:
 
+### 🎮 Desktop Cannot Be Started from EmulationStation
+- **Description:** EmulationStation doesn't contain tool to start desktop
+- **Workaround:** Start it from SSH using the script
+- **Status:** Under investigation
+
 ### 🎮 Controller Cannot Be Used as Mouse
 - **Description:** Game controllers and joysticks cannot be used to control the mouse cursor
-- **Workaround:** Use a USB mouse or keyboard for navigation
+- **Workaround:** Use a USB mouse for navigation
 - **Status:** Under investigation
 
 ### ⌨️ Virtual Keyboard Not Functioning
@@ -161,4 +143,4 @@ This project is distributed under the MIT License.
 
 ---
 
-**Built to simplify the dArkOS experience** 🎉
+**Built to increment the dArkOS experience** 🎉
